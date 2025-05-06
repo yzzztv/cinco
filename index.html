@@ -144,29 +144,11 @@
   </style>
 </head>
 <body>
-<audio id="bg-music" autoplay loop>
+<audio autoplay loop hidden>
   <source src="reggae.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
-<script>
-  const audio = document.getElementById('bg-music');
-
-  // Coba play otomatis saat halaman dibuka
-  window.addEventListener('load', () => {
-    audio.play().catch(() => {
-      // Jika autoplay gagal, tunggu interaksi pengguna
-      const resumeAudio = () => {
-        audio.play();
-        document.removeEventListener('click', resumeAudio);
-        document.removeEventListener('touchstart', resumeAudio);
-      };
-      document.addEventListener('click', resumeAudio);
-      document.addEventListener('touchstart', resumeAudio);
-    });
-  });
-</script>
-  
   <div class="overlay">
     <header>
       <h1 class="vibe">Cinco Vibera</h1>
@@ -217,5 +199,25 @@
       &copy; 2025 Cinco Vibera
     </footer>
   </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var audio = document.getElementById("bgm");
+    var played = false;
+
+    function tryPlay() {
+        if (!played) {
+            audio.play().then(() => {
+                played = true;
+            }).catch(() => {
+                document.body.addEventListener("click", tryPlay, { once: true });
+            });
+        }
+    }
+
+    tryPlay();
+});
+</script>
+
 </body>
 </html>
