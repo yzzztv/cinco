@@ -6,19 +6,6 @@
   <title>Cinco Vibera</title>
   <link rel="icon" type="image/jpeg" href="favicon.jpg">
   <style>
-    music-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      cursor: move;
-      font-size: 24px;
-      padding: 10px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-      user-select: none;
-    }
     body {
       margin: 0;
       padding: 0;
@@ -162,7 +149,9 @@
   Your browser does not support the audio element.
 </audio>
 
-<div id="music-btn">🎶</div>
+<div style="text-align:center; margin-top: 10px;">
+  <button onclick="toggleMusic()" style="padding:10px 20px; border-radius:10px; background:#ffdd57; color:#000;">🎶</button>
+</div>
 
 <script>
   let music = new Audio('reggae.mp3');
@@ -187,7 +176,7 @@
     </header>
 
     <div class="links">
-      <a href="https://x.com/" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://x.com/Chinco_vibera" target="_blank" rel="noopener noreferrer">Twitter</a>
       <a href="https://dexscreener.com/" target="_blank" rel="noopener noreferrer">Dexscreener</a>
     </div>
 
@@ -233,41 +222,23 @@
   </div>
 
 <script>
-  const music = new Audio("musik.mp3");
-  let isPlaying = false;
+document.addEventListener("DOMContentLoaded", function() {
+    var audio = document.getElementById("bgm");
+    var played = false;
 
-  document.getElementById("music-btn").addEventListener("click", () => {
-    if (isPlaying) {
-      music.pause();
-    } else {
-      music.play();
+    function tryPlay() {
+        if (!played) {
+            audio.play().then(() => {
+                played = true;
+            }).catch(() => {
+                document.body.addEventListener("click", tryPlay, { once: true });
+            });
+        }
     }
-    isPlaying = !isPlaying;
-  });
 
-  // Drag functionality
-  const btn = document.getElementById("music-btn");
-  let isDragging = false, offsetX, offsetY;
-
-  btn.addEventListener("mousedown", function(e) {
-    isDragging = true;
-    offsetX = e.clientX - btn.getBoundingClientRect().left;
-    offsetY = e.clientY - btn.getBoundingClientRect().top;
-  });
-
-  document.addEventListener("mousemove", function(e) {
-    if (isDragging) {
-      btn.style.left = (e.clientX - offsetX) + "px";
-      btn.style.top = (e.clientY - offsetY) + "px";
-      btn.style.right = "auto";
-      btn.style.bottom = "auto";
-    }
-  });
-
-  document.addEventListener("mouseup", function() {
-    isDragging = false;
-  });
+    tryPlay();
+});
 </script>
-  
+
 </body>
 </html>
