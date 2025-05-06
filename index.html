@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cinco Vibera</title>
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      margin: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #ffdd57;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .links a {
+      text-decoration: none;
+      margin: 0 10px;
+      padding: 10px 20px;
+      background-color: #1db954;
+      color: white;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .links a:hover {
+      background-color: #14833b;
+    }
+
+    .tokenomics {
+      background-color: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .gallery img {
+      width: 180px;
+      height: auto;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
+    .gallery img:nth-child(odd) {
+      transform: rotate(5deg);
+    }
+
+    .gallery img:nth-child(even) {
+      transform: rotate(-5deg);
+    }
+
+    .convince {
+      margin-top: 30px;
+      font-size: 1.2em;
+      line-height: 1.6;
+      background-color: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .roadmap {
+      margin-top: 40px;
+    }
+
+    .roadmap h2 {
+      color: #ffdd57;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .roadmap ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .roadmap li {
+      margin: 15px 0;
+      background-color: rgba(255,255,255,0.08);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9em;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 0 0 20px 20px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .gallery img {
+        width: 100px;
+      }
+    }
+
+    @keyframes reggaeVibe {
+      0% { transform: rotate(1deg) scale(1.01); }
+      50% { transform: rotate(-1deg) scale(1.02); }
+      100% { transform: rotate(1deg) scale(1.01); }
+    }
+
+    .vibe {
+      animation: reggaeVibe 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body>
+<audio autoplay loop hidden>
+  <source src="reggae.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div style="text-align:center; margin-top: 10px;">
+  <button onclick="toggleMusic()" style="padding:10px 20px; border-radius:10px; background:#ffdd57; color:#000;">Toggle Music</button>
+</div>
+
+<script>
+  let music = new Audio('reggae.mp3');
+  music.loop = true;
+  music.volume = 0.5;
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (!isPlaying) {
+      music.play();
+      isPlaying = true;
+    } else {
+      music.pause();
+      isPlaying = false;
+    }
+  }
+</script>
+
+  <div class="overlay">
+    <header>
+      <h1 class="vibe">Cinco Vibera</h1>
+    </header>
+
+    <div class="links">
+      <a href="https://x.com/" target="_blank" rel="noopener noreferrer">Follow on X</a>
+      <a href="https://dexscreener.com/" target="_blank" rel="noopener noreferrer">View on Dexscreener</a>
+    </div>
+
+    <section class="description">
+      <p>CINCO is more than just a digital token—it’s a global movement inspired by the spirit, culture, and rhythm of Jamaica. Built on the values of freedom, unity, and vibes, CINCO combines blockchain technology with the Caribbean’s colorful lifestyle and positive energy.</p>
+    </section>
+
+    <section class="tokenomics">
+      <strong>Tokenomic:</strong><br>
+      Name : Cinco Vibera<br>
+      Ticker : CINCO<br>
+      Chain : Base<br>
+      CA : to be announced
+    </section>
+
+    <div class="gallery">
+      <img src="1.jpg" alt="Cinco image 1">
+      <img src="2.jpg" alt="Cinco image 2">
+      <img src="3.jpg" alt="Cinco image 3">
+      <img src="4.jpg" alt="Cinco image 4">
+      <img src="5.jpg" alt="Cinco image 5">
+    </div>
+
+    <div class="convince">
+      Join the rhythm, embrace the vibes, and become part of a movement that blends Caribbean soul with blockchain power. CINCO isn't just a memecoin—it’s a celebration of freedom, community, and the irie spirit. Be early, be bold, and ride the wave with CINCO.
+    </div>
+
+    <section class="roadmap">
+      <h2>Roadmap</h2>
+      <ul>
+        <li><strong>Phase 1:</strong> Launch token & community building</li>
+        <li><strong>Phase 2:</strong> Listings on Base explorers & dexscreener</li>
+        <li><strong>Phase 3:</strong> Jamaican-themed NFT airdrop for holders</li>
+        <li><strong>Phase 4:</strong> Partnerships with Caribbean creators & influencers</li>
+        <li><strong>Phase 5:</strong> Merch store and IRL reggae-themed events</li>
+      </ul>
+    </section>
+
+    <footer>
+      &copy; 2025 Cinco Vibera
+    </footer>
+  </div>
+</body>
+</html>
