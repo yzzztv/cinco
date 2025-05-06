@@ -149,6 +149,27 @@
   Your browser does not support the audio element.
 </audio>
 
+<div style="text-align:center; margin-top: 10px;">
+  <button onclick="toggleMusic()" style="padding:10px 20px; border-radius:10px; background:#ffdd57; color:#000;">🎶</button>
+</div>
+
+<script>
+  let music = new Audio('reggae.mp3');
+  music.loop = true;
+  music.volume = 0.5;
+  let isPlaying = false;
+
+  function toggleMusic() {
+    if (!isPlaying) {
+      music.play();
+      isPlaying = true;
+    } else {
+      music.pause();
+      isPlaying = false;
+    }
+  }
+</script>
+
   <div class="overlay">
     <header>
       <h1 class="vibe">Cinco Vibera</h1>
@@ -201,14 +222,23 @@
   </div>
 
 <script>
-  document.addEventListener('click', () => {
-    const music = document.getElementById('bgmusic');
-    if (music && music.paused) {
-      music.play().catch(() => {});
+document.addEventListener("DOMContentLoaded", function() {
+    var audio = document.getElementById("bgm");
+    var played = false;
+
+    function tryPlay() {
+        if (!played) {
+            audio.play().then(() => {
+                played = true;
+            }).catch(() => {
+                document.body.addEventListener("click", tryPlay, { once: true });
+            });
+        }
     }
-  });
+
+    tryPlay();
+});
 </script>
-  
 
 </body>
 </html>
