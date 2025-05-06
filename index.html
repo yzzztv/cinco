@@ -201,23 +201,14 @@
   </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    var audio = document.getElementById("bgm");
-    var played = false;
-
-    function tryPlay() {
-        if (!played) {
-            audio.play().then(() => {
-                played = true;
-            }).catch(() => {
-                document.body.addEventListener("click", tryPlay, { once: true });
-            });
-        }
+  document.addEventListener('click', () => {
+    const music = document.getElementById('bgmusic');
+    if (music && music.paused) {
+      music.play().catch(() => {});
     }
-
-    tryPlay();
-});
+  });
 </script>
+  
 
 </body>
 </html>
